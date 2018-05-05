@@ -10,7 +10,7 @@ const UserSchema = new Schema({
   email: { type: String, unique: true, lowercase: true },
   password: { type: String, select: false },
   birthDate: { type: String, default: "" },
-  gender: { type: String, default: "" },,
+  gender: { type: String, default: "" },
   photo: { type: String, default: "" },
   signupDate: { type: Date, default: Date.now() }
 })
