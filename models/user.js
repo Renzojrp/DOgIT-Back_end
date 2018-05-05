@@ -6,11 +6,11 @@ const Schema = mongoose.Schema
 const UserSchema = new Schema({
   name: String,
   lastName: String,
-  mobilePhone: String,
+  mobilePhone: { type: String, default: "" },
   email: { type: String, unique: true, lowercase: true },
   password: { type: String, select: false },
-  birthDate: String,  
-  gender: String,
+  birthDate: { type: String, default: "" },
+  gender: { type: String, default: "" },,
   photo: { type: String, default: "" },
   signupDate: { type: Date, default: Date.now() }
 })
