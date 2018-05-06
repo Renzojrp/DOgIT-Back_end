@@ -13,15 +13,24 @@ function signUp (req, res) {
     birthDate: req.body.birthDate,
     gender: req.body.gender
   })
+    let email = req.body.email
 
-  user.save((err) => {
-    if (err) return res.status(500).send({ message: `Error al crear el usuario: ${err}` })
-    })
+  User.findOne({"email":email}, (err, user) => {
+    if(err) return res.status(500).send({message: `Error al realizar la peticion: ${err}`})
+    if(!user) {return user.save((err) => {
+        if (err) return res.status(500).send({ message: `Error al crear el usuario: ${err}` })
+      })
+      res.status(200).send({
+        message: 'Te has registrado correctamente',
+        token: service.createToken(user),
+        user})
+    } else {
+      res.status(200).send({
+        message: `Error`})
+    }
+  })
 
-    res.status(200).send({
-      message: 'Te has registrado correctamente',
-      token: service.createToken(user),
-      user})
+
 }
 
 function signIn (req, res) {
