@@ -12,7 +12,11 @@ const UserSchema = new Schema({
   birthDate: { type: String, default: "" },
   gender: { type: String, default: "" },
   photo: { type: String, default: "" },
-  signupDate: { type: Date, default: Date.now() }
+  signupDate: { type: Date, default: Date.now() },
+  workPlace: String,
+  dni:  Number,
+  address: String,
+  district: String
 })
 
 module.exports = mongoose.model('User', UserSchema)

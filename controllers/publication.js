@@ -97,7 +97,7 @@ function savePublication (req, res) {
   publication.pet = req.body.pet
   publication.description = req.body.description
   publication.requirements = req.body.requirements
-
+  
   publication.save((err, publicationStored) => {
     if(err) res.status(500).send({message: `Error al salvar en la base de datos: ${err}`})
 

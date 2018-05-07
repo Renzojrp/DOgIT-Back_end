@@ -7,9 +7,13 @@ const User = mongoose.model('User')
 const PetSchema = new Schema({
   user: {type: Schema.ObjectId, ref: "User"},
   name: String,
+  weigth: String,
+  size: String,
   gender: String,
   age: String,
-  photo: { type: String, default: "" }
+  rescue_date: String,
+  photo: { type: String, default: "" },
+  description : String
 })
 
 module.exports = mongoose.model('Pet', PetSchema)
