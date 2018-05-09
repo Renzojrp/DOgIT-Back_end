@@ -31,7 +31,7 @@ function getPets (req, res) {
 function getPetbyUser (req, res) {
   let userId = req.params.userId
 
-  Pet.find({"user":userId, "status": "A"}, (err, pets) => {
+  Pet.find({"user":userId}, (err, pets) => {
     if(err) return res.status(500).send({message: `Error al realizar la peticion: ${err}`})
     if(!pets) return res.status(404).send({message: `No existen mascotas`})
 
@@ -48,13 +48,9 @@ function savePet (req, res) {
   let pet = new Pet()
   pet.user = req.body.user
   pet.name = req.body.name
-  pet.weight = req.body.weight
-  pet.size = req.body.size
   pet.gender = req.body.gender
   pet.age = req.body.age
-  pet.rescue_date = req.body.rescue_date
   pet.photo = req.body.photo
-  pet.description = req.body.description
 
   pet.save((err, petStored) => {
     if(err) res.status(500).send({message: `Error al salvar en la base de datos: ${err}`})
