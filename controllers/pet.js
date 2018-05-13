@@ -48,9 +48,13 @@ function savePet (req, res) {
   let pet = new Pet()
   pet.user = req.body.user
   pet.name = req.body.name
+  pet.weigth = req.body.weigth
+  pet.size = req.body.size
   pet.gender = req.body.gender
   pet.age = req.body.age
+  pet.rescue_date = req.body.rescue_date
   pet.photo = req.body.photo
+  pet.description = req.body.description
 
   pet.save((err, petStored) => {
     if(err) res.status(500).send({message: `Error al salvar en la base de datos: ${err}`})
@@ -66,7 +70,7 @@ function updatePet (req, res) {
   Pet.findByIdAndUpdate(petId, update, (err, petUpdated) =>{
     if(err) res.status(500).send({message: `Error al actualizar la mascota: ${err}`})
 
-    res.status(200).send({ instrumpetent: petUpdated})
+    res.status(200).send({ pet: petUpdated})
   })
 }
 
