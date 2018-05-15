@@ -92,10 +92,9 @@ function getUserByEmail (req, res){
 
   User.findOne({"email":email}, (err, user) => {
     if(err) return res.status(500).send({message: `Error al realizar la peticion: ${err}`})
-    if(!user) return res.status(200).send({message: `OK`})
+    if(!user) return res.status(200).send({message: `No existe un usuario con ese correo`})
 
     res.status(200).send({
-      message: `Exist email`,
       user })
   })
 }
