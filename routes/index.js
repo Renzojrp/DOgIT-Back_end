@@ -4,6 +4,7 @@ const express = require('express')
 const userControllers = require('../controllers/user')
 const petControllers = require('../controllers/pet')
 const publicationControllers = require('../controllers/publication')
+const eventControllers = require('../controllers/event')
 
 const auth = require('../middlewares/auth')
 
@@ -17,7 +18,7 @@ api.get('/user/email/:email', userControllers.getUserByEmail)
 api.delete('/user/:userId', userControllers.deleteUser)
 api.put('/user/:userId', userControllers.updateUser)
 
-api.get('/pet', auth, petControllers.getPets)
+api.get('/pet', petControllers.getPets)
 api.get('/pet/:petId', petControllers.getPet)
 api.get('/pet/user/:userId', petControllers.getPetbyUser)
 api.post('/pet', petControllers.savePet)
@@ -32,6 +33,13 @@ api.get('/publication/status/:status', publicationControllers.getPublicationbySt
 api.post('/publication', publicationControllers.savePublication)
 api.delete('/publication/:publicationId', publicationControllers.deletePublication)
 api.put('/publication/:publicationId', publicationControllers.updatePublication)
+
+api.get('/event', eventControllers.getEvents)
+api.get('/event/:eventId', eventControllers.getEvent)
+api.get('/event/user/:userId', eventControllers.getEventbyUser)
+api.post('/event', eventControllers.saveEvent)
+api.delete('/event/:eventId', eventControllers.deleteEvent)
+api.put('/event/:eventId', eventControllers.updateEvent)
 
 api.get('/private', auth, (req, res) => {
   res.status(200).send({ message: 'Tienes acceso' })
