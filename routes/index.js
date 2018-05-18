@@ -5,6 +5,7 @@ const userControllers = require('../controllers/user')
 const petControllers = require('../controllers/pet')
 const publicationControllers = require('../controllers/publication')
 const eventControllers = require('../controllers/event')
+const assistanceControllers = require('../controllers/assistance')
 
 const auth = require('../middlewares/auth')
 
@@ -40,6 +41,14 @@ api.get('/event/user/:userId', eventControllers.getEventbyUser)
 api.post('/event', eventControllers.saveEvent)
 api.delete('/event/:eventId', eventControllers.deleteEvent)
 api.put('/event/:eventId', eventControllers.updateEvent)
+
+api.get('/assistance', assistanceControllers.getAssistances)
+api.get('/assistance/:assistanceId', assistanceControllers.getAssistance)
+api.get('/assistance/event/:eventId', assistanceControllers.getAssistancebyEvent)
+api.get('/assistance/user/:userId', assistanceControllers.getAssistancebyUser)
+api.post('/assistance', assistanceControllers.saveAssistance)
+api.delete('/assistance/:assistanceId', assistanceControllers.deleteAssistance)
+api.put('/assistance/:assistanceId', assistanceControllers.updateAssistance)
 
 api.get('/private', auth, (req, res) => {
   res.status(200).send({ message: 'Tienes acceso' })
