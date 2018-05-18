@@ -17,7 +17,7 @@ api.get('/user/email/:email', userControllers.getUserByEmail)
 api.delete('/user/:userId', userControllers.deleteUser)
 api.put('/user/:userId', userControllers.updateUser)
 
-api.get('/pet', petControllers.getPets)
+api.get('/pet', auth, petControllers.getPets)
 api.get('/pet/:petId', petControllers.getPet)
 api.get('/pet/user/:userId', petControllers.getPetbyUser)
 api.post('/pet', petControllers.savePet)
