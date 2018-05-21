@@ -40,3 +40,66 @@ function getRequest (req, res){
     });
   })
 }
+
+function getRequestbyUser (req, res) {
+  let userId = req.params.userId
+
+  Request.find({"user":userId}, (err, pets) => {
+    if(err) return res.status(500).send({message: `Error al realizar la peticion: ${err}`})
+    if(!pets) return res.status(404).send({message: `No existen solicitudes`})
+
+    User.populate(requests, {path: "user"}, function(err, requests){
+        res.status(200).send({ requests })
+    });
+  })
+}
+
+function saveRequest (req, res) {
+  console.log('POST /api/request')
+  console.log(req.body)
+
+  let request = new Request()
+  request.user = req.body.user
+  request.publication = req.body.publication
+  request.date = req.body.date
+  request.status = req.body.status
+
+  request.save((err, requestStored) => {
+    if(err) res.status(500).send({message: `Error al salvar en la base de datos: ${err}`})
+
+    res.status(200).send({request: requestStored})
+  })
+}
+
+function updateRequest (req, res) {
+  let requestId = req.params.requestId
+  let update = req.body
+
+  Request.findByIdAndUpdate(requestId, update, (err, requestUpdated) =>{
+    if(err) res.status(500).send({message: `Error al actualizar la solicitud: ${err}`})
+
+    res.status(200).send({ request: requestUpdated})
+  })
+}
+
+function deleteRequest (req, res) {
+  let requestId = req.params.requestId
+
+  Request.findById(requestId, (err, pet) => {
+    if(err) res.status(500).send({message: `Error al borrar la solicitud: ${err}`})
+
+    request.remove(err => {
+      if(err) res.status(500).send({message: `Error al borrar la solicitud: ${err}`})
+      res.status(200).send({message: `La solicitud ha sido eliminada`})
+    })
+  })
+}
+
+module.exports = {
+  getRequest,
+  getRequests,
+  getRequestbyUser,
+  saveRequest,
+  updateRequest,
+  deleteRequest
+}

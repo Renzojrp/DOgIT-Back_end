@@ -50,6 +50,13 @@ api.post('/assistance', assistanceControllers.saveAssistance)
 api.delete('/assistance/:assistanceId', assistanceControllers.deleteAssistance)
 api.put('/assistance/:assistanceId', assistanceControllers.updateAssistance)
 
+api.get('/request', requestControllers.getRequests)
+api.get('/request/:requestId', requestControllers.getRequest)
+api.get('/request/user/:userId', requestControllers.getRequestbyUser)
+api.post('/request', requestControllers.saveRequest)
+api.delete('/request/:requestId', requestControllers.deleteRequest)
+api.put('/request/:requestId', requestControllers.updateRequest)
+
 api.get('/private', auth, (req, res) => {
   res.status(200).send({ message: 'Tienes acceso' })
 })
