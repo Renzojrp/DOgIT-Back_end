@@ -24,8 +24,8 @@ function getRequest (req, res){
   })
 }
 
-function getRequest (req, res){
-  Reques.find({}, (err, requests) => {
+function getRequests (req, res){
+  Request.find({}, (err, requests) => {
     if(err) return res.status(500).send({message:`Error al realizar la petición: ${err}`})
     if(!requests) return res.status(404).send({message:`No existen solicitudes`})
 

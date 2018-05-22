@@ -6,6 +6,7 @@ const petControllers = require('../controllers/pet')
 const publicationControllers = require('../controllers/publication')
 const eventControllers = require('../controllers/event')
 const assistanceControllers = require('../controllers/assistance')
+const requestControllers = require('../controllers/request')
 
 const auth = require('../middlewares/auth')
 
