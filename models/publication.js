@@ -12,7 +12,8 @@ const PublicationSchema = new Schema({
   requirements: String,
   publicationDate: { type: Date, default: Date.now() },
   status: { type: String, default: "A" },
-  address: String
+  address: String,
+  date: String
 })
 
 module.exports = mongoose.model('Publication', PublicationSchema)
