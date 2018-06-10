@@ -8,8 +8,8 @@ const Publication = mongoose.model('Publication')
 const RequestSchema = new Schema({
   user: {type:Schema.ObjectId, ref:"User"},
   publication: {type:Schema.ObjectId, ref:"Publication"},
-  date: String,
-  status: String
+  date: { type: Date, default: Date.now() },
+  message: String
 })
 
 module.exports = mongoose.model('Request', RequestSchema)

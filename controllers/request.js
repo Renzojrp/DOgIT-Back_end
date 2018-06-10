@@ -49,7 +49,32 @@ function getRequestbyUser (req, res) {
     if(!pets) return res.status(404).send({message: `No existen solicitudes`})
 
     User.populate(requests, {path: "user"}, function(err, requests){
-        res.status(200).send({ requests })
+      Publication.populate(requests, {path: "publication"}, function(err, requests){
+        Pet.populate(requests, {path: "publication.pet"}, function(err, requests){
+          User.populate(requests, {path: "publication.user"}, function(err, requests){
+              res.status(200).send({ requests })
+          });
+        });
+      });
+    });
+  })
+}
+
+function getRequestbyPublication (req, res) {
+  let publicationId = req.params.publicationId
+
+  Request.find({"publication":publicationId}, (err, pets) => {
+    if(err) return res.status(500).send({message: `Error al realizar la peticion: ${err}`})
+    if(!pets) return res.status(404).send({message: `No existen solicitudes`})
+
+    User.populate(requests, {path: "user"}, function(err, requests){
+      Publication.populate(requests, {path: "publication"}, function(err, requests){
+        Pet.populate(requests, {path: "publication.pet"}, function(err, requests){
+          User.populate(requests, {path: "publication.user"}, function(err, requests){
+              res.status(200).send({ requests })
+          });
+        });
+      });
     });
   })
 }
@@ -62,7 +87,7 @@ function saveRequest (req, res) {
   request.user = req.body.user
   request.publication = req.body.publication
   request.date = req.body.date
-  request.status = req.body.status
+  request.message = req.body.message
 
   request.save((err, requestStored) => {
     if(err) res.status(500).send({message: `Error al salvar en la base de datos: ${err}`})
@@ -99,6 +124,7 @@ module.exports = {
   getRequest,
   getRequests,
   getRequestbyUser,
+  getRequestbyPublication,
   saveRequest,
   updateRequest,
   deleteRequest
