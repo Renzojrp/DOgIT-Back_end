@@ -9,6 +9,7 @@ const BlogSchema = new Schema({
   user: {type: Schema.ObjectId, ref: "User"},
   pet: {type: Schema.ObjectId, ref: "Pet"},
   description: String,
+  date: { type: Date, default: Date.now() },
   status: { type: String, default: "A" }
 })
 

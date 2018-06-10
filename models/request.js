@@ -9,7 +9,8 @@ const RequestSchema = new Schema({
   user: {type:Schema.ObjectId, ref:"User"},
   publication: {type:Schema.ObjectId, ref:"Publication"},
   date: { type: Date, default: Date.now() },
-  message: String
+  message: String,
+  status: { type: String, default: "S" }
 })
 
 module.exports = mongoose.model('Request', RequestSchema)
