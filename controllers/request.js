@@ -16,7 +16,9 @@ function getRequest (req, res){
       Publication.populate(request, {path: "publication"}, function(err, request){
         Pet.populate(request, {path: "publication.pet"}, function(err, request){
           User.populate(request, {path: "publication.user"}, function(err, request){
-              res.status(200).send({ request })
+            User.populate(request, {path: "publication.pet.user"}, function(err, request){
+                res.status(200).send({ request })
+            });
           });
         });
       });
@@ -33,7 +35,9 @@ function getRequests (req, res){
       Publication.populate(requests, {path: "publication"}, function(err, requests){
         Pet.populate(requests, {path: "publication.pet"}, function(err, requests){
           User.populate(requests, {path: "publication.user"}, function(err, requests){
-              res.status(200).send({ requests })
+            User.populate(requests, {path: "publication.pet.user"}, function(err, requests){
+                res.status(200).send({ requests })
+            });
           });
         });
       });
@@ -52,7 +56,9 @@ function getRequestbyUser (req, res) {
       Publication.populate(requests, {path: "publication"}, function(err, requests){
         Pet.populate(requests, {path: "publication.pet"}, function(err, requests){
           User.populate(requests, {path: "publication.user"}, function(err, requests){
-              res.status(200).send({ requests })
+            User.populate(requests, {path: "publication.pet.user"}, function(err, requests){
+                res.status(200).send({ requests })
+            });
           });
         });
       });
@@ -71,7 +77,9 @@ function getRequestbyPublication (req, res) {
       Publication.populate(requests, {path: "publication"}, function(err, requests){
         Pet.populate(requests, {path: "publication.pet"}, function(err, requests){
           User.populate(requests, {path: "publication.user"}, function(err, requests){
-              res.status(200).send({ requests })
+            User.populate(requests, {path: "publication.pet.user"}, function(err, requests){
+                res.status(200).send({ requests })
+            });
           });
         });
       });
