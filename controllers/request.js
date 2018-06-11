@@ -48,9 +48,9 @@ function getRequests (req, res){
 function getRequestbyUser (req, res) {
   let userId = req.params.userId
 
-  Request.find({"user":userId}, (err, pets) => {
+  Request.find({"user":userId}, (err, requests) => {
     if(err) return res.status(500).send({message: `Error al realizar la peticion: ${err}`})
-    if(!pets) return res.status(404).send({message: `No existen solicitudes`})
+    if(!requests) return res.status(404).send({message: `No existen solicitudes`})
 
     User.populate(requests, {path: "user"}, function(err, requests){
       Publication.populate(requests, {path: "publication"}, function(err, requests){
@@ -69,9 +69,9 @@ function getRequestbyUser (req, res) {
 function getRequestbyPublication (req, res) {
   let publicationId = req.params.publicationId
 
-  Request.find({"publication":publicationId}, (err, pets) => {
+  Request.find({"publication":publicationId}, (err, requests) => {
     if(err) return res.status(500).send({message: `Error al realizar la peticion: ${err}`})
-    if(!pets) return res.status(404).send({message: `No existen solicitudes`})
+    if(!requests) return res.status(404).send({message: `No existen solicitudes`})
 
     User.populate(requests, {path: "user"}, function(err, requests){
       Publication.populate(requests, {path: "publication"}, function(err, requests){
