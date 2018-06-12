@@ -94,7 +94,6 @@ function saveRequest (req, res) {
   let request = new Request()
   request.user = req.body.user
   request.publication = req.body.publication
-  request.date = req.body.date
   request.message = req.body.message
 
   request.save((err, requestStored) => {
