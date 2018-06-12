@@ -27,7 +27,7 @@ function getAdoption (req, res){
 }
 
 function getAdoptions (req, res){
-  Adoption.find({"status": "S"}, (err, adoptions) => {
+  Adoption.find({}, (err, adoptions) => {
     if(err) return res.status(500).send({message:`Error al realizar la petición: ${err}`})
     if(!adoptions) return res.status(404).send({message:`No existen adopciónes`})
 
