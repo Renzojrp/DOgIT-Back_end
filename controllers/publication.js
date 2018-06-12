@@ -23,7 +23,7 @@ function getPublication (req, res){
 }
 
 function getPublications (req, res) {
-  Publication.find({}, function(err,publications){
+  Publication.find({"status": "S"}, function(err,publications){
     if(err) return res.status(500).send({message: `Error al realizar la peticion: ${err}`})
     if(!publications) return res.status(404).send({message: `No existen publicaciones`})
 
