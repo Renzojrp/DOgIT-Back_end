@@ -8,7 +8,8 @@ const Publication = mongoose.model('Publication')
 const VisitSchema = new Schema({
   user: {type:Schema.ObjectId, ref:"User"},
   publication: {type:Schema.ObjectId, ref:"Publication"},
-  date: { type: Date, default: Date.now() },
+  place: String,
+  date: String,
   message: String
 })
 

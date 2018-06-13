@@ -94,6 +94,8 @@ function saveVisit (req, res) {
   let visit = new Visit()
   visit.user = req.body.user
   visit.publication = req.body.publication
+  visit.date = req.body.date
+  visit.place = req.body.place
   visit.message = req.body.message
 
   visit.save((err, visitStored) => {
