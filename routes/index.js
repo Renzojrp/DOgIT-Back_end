@@ -9,6 +9,7 @@ const assistanceControllers = require('../controllers/assistance')
 const requestControllers = require('../controllers/request')
 const blogControllers = require('../controllers/blog')
 const adoptionControllers = require('../controllers/adoption')
+const visitControllers = require('../controllers/visit')
 
 const auth = require('../middlewares/auth')
 
@@ -77,6 +78,14 @@ api.get('/adoption/publication/:publicationId', adoptionControllers.getAdoptionb
 api.post('/adoption', adoptionControllers.saveAdoption)
 api.delete('/adoption/:adoptionId', adoptionControllers.deleteAdoption)
 api.put('/adoption/:adoptionId', adoptionControllers.updateAdoption)
+
+api.get('/visit', visitControllers.getVisits)
+api.get('/visit/:visitId', visitControllers.getVisit)
+api.get('/visit/user/:userId', visitControllers.getVisitbyUser)
+api.get('/visit/publication/:publicationId', visitControllers.getVisitbyPublication)
+api.post('/visit', visitControllers.saveVisit)
+api.delete('/visit/:visitId', visitControllers.deleteVisit)
+api.put('/visit/:visitId', visitControllers.updateVisit)
 
 api.get('/private', auth, (req, res) => {
   res.status(200).send({ message: 'Tienes acceso' })
