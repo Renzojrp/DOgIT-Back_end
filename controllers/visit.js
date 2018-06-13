@@ -94,6 +94,7 @@ function saveVisit (req, res) {
   let visit = new Visit()
   visit.user = req.body.user
   visit.publication = req.body.publication
+  visit.message = req.body.message
 
   visit.save((err, visitStored) => {
     if(err) res.status(500).send({message: `Error al salvar en la base de datos: ${err}`})
