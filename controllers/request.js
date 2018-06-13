@@ -48,7 +48,7 @@ function getRequests (req, res){
 function getRequestbyUser (req, res) {
   let userId = req.params.userId
 
-  Request.find({"user":userId}, (err, requests) => {
+  Request.find({"user":userId, "status": "S"}, (err, requests) => {
     if(err) return res.status(500).send({message: `Error al realizar la peticion: ${err}`})
     if(!requests) return res.status(404).send({message: `No existen solicitudes`})
 
