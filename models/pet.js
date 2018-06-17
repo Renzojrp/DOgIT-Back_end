@@ -13,7 +13,8 @@ const PetSchema = new Schema({
   age: String,
   rescue_date: String,
   photo: { type: String, default: "" },
-  description : String
+  description : String,
+  status: { type: String, default: "A" }
 })
 
 module.exports = mongoose.model('Pet', PetSchema)
