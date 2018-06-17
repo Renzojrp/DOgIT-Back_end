@@ -31,7 +31,7 @@ function getPets (req, res) {
 function getPetbyUser (req, res) {
   let userId = req.params.userId
 
-  Pet.find({"user":userId}, (err, pets) => {
+  Pet.find({"user":userId, "status": "A"}, (err, pets) => {
     if(err) return res.status(500).send({message: `Error al realizar la peticion: ${err}`})
     if(!pets) return res.status(404).send({message: `No existen mascotas`})
 
