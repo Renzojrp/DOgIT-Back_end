@@ -23,7 +23,7 @@ function getBlog (req, res){
 }
 
 function getBlogs (req, res) {
-  Blog.find({}, function(err,blogs){
+  Blog.find({"status": "A"}, function(err,blogs){
     if(err) return res.status(500).send({message: `Error al realizar la peticion: ${err}`})
     if(!blogs) return res.status(404).send({message: `No existen publicaciones`})
 
