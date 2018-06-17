@@ -11,7 +11,8 @@ const EventSchema = new Schema({
   address: String,
   description: String,
   date: String,
-  capacity: Number
+  capacity: Number,
+  status: { type: String, default: "A" }
 })
 
 module.exports = mongoose.model('Event', EventSchema)

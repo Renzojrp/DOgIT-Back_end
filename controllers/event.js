@@ -18,7 +18,7 @@ function getEvent (req, res) {
 }
 
 function getEvents (req, res) {
-  Event.find({}, (err, events) => {
+  Event.find({"status": "A"}, (err, events) => {
     if(err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
     if(!events) return res.status(404).send({message: `No existen eventos`})
 
