@@ -23,7 +23,7 @@ function getPublication (req, res){
 }
 
 function getPublications (req, res) {
-  Publication.find({"status": "A"}, function(err,publications){
+  Publication.find({}, function(err,publications){
     if(err) return res.status(500).send({message: `Error al realizar la peticion: ${err}`})
     if(!publications) return res.status(404).send({message: `No existen publicaciones`})
 
@@ -74,7 +74,7 @@ function getPublicationbyUser (req, res){
 function getPublicationbyStatus (req, res){
   let status = req.params.status
 
-  Publication.find({"status":"A"}, (err, publications) => {
+  Publication.find({"status":status}, (err, publications) => {
     if(err) return res.status(500).send({message: `Error al realizar la peticion: ${err}`})
     if(!publications) return res.status(484).send({message: `No existen publicaciones en estado: ${status}`})
 
