@@ -17,7 +17,8 @@ const UserSchema = new Schema({
   workPlace: String,
   dni:  Number,
   address: String,
-  district: String
+  district: String,
+  status: { type: String, default: "A" }
 })
 
 module.exports = mongoose.model('User', UserSchema)
