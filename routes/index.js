@@ -20,6 +20,7 @@ api.post('/signin', userControllers.signIn)
 api.get('/user', userControllers.getUsers)
 api.get('/user/:userId', userControllers.getUser)
 api.get('/user/email/:email', userControllers.getUserByEmail)
+api.get('/user/type/:type', userControllers.getUserByType)
 api.delete('/user/:userId', userControllers.deleteUser)
 api.put('/user/:userId', userControllers.updateUser)
 
