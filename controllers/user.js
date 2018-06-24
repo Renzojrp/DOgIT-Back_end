@@ -102,7 +102,7 @@ function getUserByEmail (req, res){
 function getUserByType (req, res){
   let type = req.params.type
 
-  User.findOne({"type":type}, (err, user) => {
+  User.find({"type":type}, (err, user) => {
     if(err) return res.status(500).send({message: `Error al realizar la peticion: ${err}`})
     if(!user) return res.status(200).send({message: `No existe un usuario de este tipo`})
 
