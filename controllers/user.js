@@ -95,7 +95,7 @@ function getUserByEmail (req, res){
     if(!user) return res.status(200).send({message: `No existe un usuario con ese correo`})
 
     res.status(200).send({
-      user })
+      users })
   })
 }
 
@@ -107,7 +107,7 @@ function getUserByType (req, res){
     if(!user) return res.status(200).send({message: `No existe un usuario de este tipo`})
 
     res.status(200).send({
-      user })
+      users })
   })
 }
 
