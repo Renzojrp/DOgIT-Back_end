@@ -10,6 +10,7 @@ const requestControllers = require('../controllers/request')
 const blogControllers = require('../controllers/blog')
 const adoptionControllers = require('../controllers/adoption')
 const visitControllers = require('../controllers/visit')
+const postadoptionControllers = require('../controllers/postadoption')
 
 const auth = require('../middlewares/auth')
 
@@ -79,6 +80,13 @@ api.get('/adoption/publication/:publicationId', adoptionControllers.getAdoptionb
 api.post('/adoption', adoptionControllers.saveAdoption)
 api.delete('/adoption/:adoptionId', adoptionControllers.deleteAdoption)
 api.put('/adoption/:adoptionId', adoptionControllers.updateAdoption)
+
+api.get('/postadoption', postadoptionControllers.getPostadoptions)
+api.get('/postadoption/:postadoptionId', postadoptionControllers.getPostadoption)
+api.get('/postadoption/user/:userId', postadoptionControllers.getPostadoptionbyUser)
+api.post('/postadoption', postadoptionControllers.savePostadoption)
+api.delete('/postadoption/:postadoptionId', postadoptionControllers.deletePostadoption)
+api.put('/postadoption/:postadoptionId', postadoptionControllers.updatePostadoption)
 
 api.get('/visit', visitControllers.getVisits)
 api.get('/visit/:visitId', visitControllers.getVisit)
