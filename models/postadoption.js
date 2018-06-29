@@ -9,6 +9,7 @@ const PostadoptionSchema = new Schema({
   user: {type:Schema.ObjectId, ref:"User"},
   adoption: {type:Schema.ObjectId, ref:"Adoption"},
   photo: { type: String, default: "" },
+  description : String
 })
 
 module.exports = mongoose.model('Postadoption', PostadoptionSchema)

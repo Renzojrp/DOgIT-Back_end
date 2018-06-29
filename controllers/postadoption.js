@@ -87,6 +87,7 @@ function savePostadoption (req, res) {
   postadoption.user = req.body.user
   postadoption.adoption = req.body.adoption
   postadoption.photo = req.body.photo
+  postadoption.description = req.body.description
 
   postadoption.save((err, postadoptionStored) => {
     if(err) res.status(500).send({message: `Error al salvar en la base de datos: ${err}`})
